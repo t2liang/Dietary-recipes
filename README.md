@@ -17,6 +17,8 @@ After training our model, we get an accuracy of 0.545 on our training set. Our c
 
 ## Final Model 
 
+To improve upon the baseline DecisionTree model, we engineer these new features: 
+
 * standardized 'calories' feature
     - Taking a look at the average 'calories' value for dietary and non-dietary recipes, respectively, we notice both groups have some outlier values that may hinder our model accuracy. By re-scaling with standardization, the prediction process is more robust to outliers.
 * binarized 'sodium' feature with a threshold of 10
@@ -24,12 +26,13 @@ After training our model, we get an accuracy of 0.545 on our training set. Our c
 * binarized 'calories' feature with a threshold of 450
     - The 'dietary' group has an average 'calories' value that is much smaller than that of the entire population, specifically that it has a mean value of 450. So, indicating 1 of recipes with calorie values higher than 450 and 0 of recipes with calorie values less than 450, aids in our precision value.
 
-To improve upon the baseline DecisionTree model, we utilize GridSearchCV to tune the tree's hyperparameters. 
+To improve upon the baseline DecisionTree model, we also utilize GridSearchCV to tune the tree's hyperparameters. 
 
     1. Max_depth : not specified in our baseline Decision Tree, so the nodes will  expand until all leaf nodes are pure or until all leaf nodes contain less than min_samples_split. Thus tuning this parameter will prevent overfitting.
     2. min_samples_split : tuned also as a method of preventing overfitting.
     3. criterion : the choices "gini" and "entropy" use different metrics to measure the probability of random misclassification.
-After running GridSearchCV with k=5, we find that the tree with hyperparameters criterion='entropy', max_depth=7, min_samples_split=200 performed the best.
+
+After running GridSearchCV with k=5, we find that the tree with hyperparameters criterion='entropy', max_depth=7, min_samples_split=200 performed the best. We then use this tuned DecisionTree to train our dataset from the baseline step.
 
 Our final model achieved an accuracy of 0.606, compared to our baseline model accuracy of 0.545. In addition, the training and testing accuracies of the final model is much more balanced (0.609 on training) indicating that we resolved much of our original overfitting issue.
 
