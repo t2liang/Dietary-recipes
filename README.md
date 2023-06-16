@@ -44,9 +44,13 @@ We evaluate if our model is fair for two groups:
 To determine if our model performs better for low calorie recipes, we run a permutation test, using precision as the evaluation metric, and the difference in precision as our test statistic. 
 
 Null Hypothesis: 
+
     Our model is fair. Its precision for high-calorie recipes and low-calorie recipes are roughly the same, and any differences are due to random chance.
+
 Alternative Hypothesis: 
+
     Our model is unfair. Its precision for low-calorie recipes is higher than its precision for high-calorie recipes.
 
-We achieve a p-value in our permutation test of 0.224.
-It seems like the difference in precision across the two groups is significant, using significance level 0.05. Thus, we can infer from our test that our model is better at predicting whether a recipe is 'dietary' or not if the given recipe is "low calorie".
+
+It seems like the difference in precision across the two groups is not significant, using significance level of 0.05. We achieve a p-value in our permutation test of 
+0.224. As this is above our cut-off value, we fail to reject the null hypothesis. Thus, we can infer from our test that our model is fair and performs roughly the same for both low-calorie recipes and high-calorie recipes.
