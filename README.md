@@ -35,7 +35,6 @@ Our final model achieved an accuracy of 0.606, compared to our baseline model ac
 
 ## Fairness Analysis
 
-## Final Model 
 We evaluate if our model is fair for two groups:
     "high calorie" : recipes with calorie values greater than 500
     "low calorie" : recipes with calorie values less than 500
